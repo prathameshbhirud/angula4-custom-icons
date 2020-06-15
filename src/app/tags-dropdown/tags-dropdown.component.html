@@ -1,0 +1,24 @@
+<div>
+  <input type="text" >
+  <ul id="grouplist" class="list-group" [hidden]="inputListHidden">
+    <li *ngFor="let item of items; let i=index"
+        (click)="select(i)" 
+        [ngClass]="{'active': selectedIndex == i, 'list-group-item': true}" >
+      {{ item.text }}
+    </li>
+  </ul>
+</div>
+
+
+<div *ngIf="games">
+    <div class="form-group">
+    <label for="name">Name:</label>
+      <select class="form-control" name="game" [(ngModel)]="selectedGame" required>
+        <option *ngFor="let game of games" [ngValue]="game" > {{game.name}} </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="type">Type:</label>
+      <input type="type" class="form-control" name="type" [(ngModel)]="selectedGame.type">
+    </div>
+  </div> 
